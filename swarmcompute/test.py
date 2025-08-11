@@ -1,17 +1,25 @@
 import unittest
 from eigenlib.utils.project_setup import ProjectSetupClass
-from swarmcompute.main import MainClass
-from swarmcompute.config import test_config as config
 ProjectSetupClass(project_folder='swarm-compute', test_environ=True)
 
-class TestMain(unittest.TestCase):
+########################################################################################################################
+"""SWARM AUTOMATIONS TESTS"""
+########################################################################################################################
+
+class UnitTestMainClass(unittest.TestCase):
     def setUp(self):
-        self.main = MainClass(config)
-        self.config = config
+        from eigenlib.utils.testing_utils import TestingUtilsClass
+        from swarmcompute.main import MainClass
+        ################################################################################################################
+        ################################################################################################################
+        self.test_df, self.model, self.image, self.texto = TestingUtilsClass().get_dummy_data()
+        self.main = MainClass({})
 
-    def test_initialize(self):
-        updated_config = self.main.initialize(self.config)
+class UnitTestModulesClass(unittest.TestCase):
+    def setUp(self):
+        import os
+        from eigenlib.utils.testing_utils import TestingUtilsClass, module_test_coverage
+        ################################################################################################################
+        module_test_coverage(os.environ['PROJECT_NAME'] + '.modules', self)
+        self.test_df, self.model, self.image, self.texto = TestingUtilsClass().get_dummy_data()
 
-
-if __name__ == '__main__':
-    unittest.main()
