@@ -1,26 +1,37 @@
+import time
+
 from eigenlib.utils.databricks_serving_utils import use_endpoint
-from eigenlib.utils.project_setup import ProjectSetupClass
-ProjectSetupClass(project_folder='swarm-compute')
 
 class MainClass:
-    def __init__(self, config={}):
-        self.hypothesis = config['hypothesis']
-        self.use_cloud = config['use_cloud']
-        self.use_wandb = config['use_wandb']
+    def __init__(self, config):
+        pass
 
     @use_endpoint
     def initialize(self, config):
         return config
 
-if __name__ == '__main__':
-    from swarmcompute.config import code_assistant_config as config
-    main = MainClass(config)
-    #main.initialize(config)
-    #main.tools_setup(config)
-    #main.dataset_generation(config)
-    #main.dataset_labeling(config)
-    #main.train(config)
-    #main.eval(config)
-    #main.predict(config)
-    #main.telegram_chatbot_run(config)
-    main.launch_front(config)
+    def launch_personal_net(self, config):
+        from eigenlib.utils.nano_net import NanoNetClass
+        ################################################################################################################
+        mode = config['mode']
+        master_address = config['master_address']
+        password = config['password']
+        node_name = config['node_name']
+        node_method = config['node_method']
+        address_node = config['address_node']
+        payload = config['payload']
+        delay = config['delay']
+        ################################################################################################################
+        net = NanoNetClass()
+        if mode == 'master':
+            NanoNetClass.kill_processes_on_port(5005)
+            net.launch_master(master_address=master_address, password=password)
+        elif mode == 'node':
+            net.launch_node(node_name=node_name, node_method=node_method, master_address=master_address, password=password, delay=delay)
+        elif mode == 'client':
+            net.launch_node(node_name='client_node', node_method=None, master_address=master_address, password=password, delay=delay)
+            response = net.call(address_node=address_node, payload=payload)
+            config['response'] = response
+            net.stop()
+        return config
+

@@ -1,6 +1,10 @@
 from eigenlib.utils.testing_utils import TestUtils
 TestUtils().get_coverage('./swarmcompute')
 
+test = TestMainClass()
+test.setUp()
+test.test_launch_personal_net()
+
 #MODULE#################################################################################################################
 class MainModule:
     def __init__(self):
