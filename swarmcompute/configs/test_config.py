@@ -1,6 +1,6 @@
 
 """personal_server"""
-test_config = {
+config = {
     # NANO NET
     'mode': 'master',
     'master_address': 'tcp://localhost:5005',

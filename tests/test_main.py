@@ -1,5 +1,5 @@
 from swarmcompute.main import MainClass
-from swarmcompute.configs.test_config import test_config as config
+from swarmcompute.configs.test_config import config
 import unittest
 import copy
 
