@@ -1,33 +1,39 @@
-from eigenlib.utils.testing_utils import TestUtils
-TestUtils().get_coverage('./swarmcompute')
+import unittest
+import os
+from eigenlib.utils.project_setup import ProjectSetup
 
-#MODULE#################################################################################################################
-class MainModule:
+########################################################################################################################
+base_path = f'C:/Users/{os.environ["USERNAME"]}/Desktop/proyectos'
+project_folder = 'swarm-compute'
+path_dirs = [
+            #os.path.join(base_path, 'swarm-ml'),
+            #os.path.join(base_path, 'swarm-intelligence'),
+            #os.path.join(base_path, 'swarm-automations'),
+            os.path.join(base_path, 'swarm-compute'),
+            os.path.join(base_path, 'eigenlib')
+        ]
+########################################################################################################################
+ps = ProjectSetup()
+ps.health_check(base_path=base_path, project_folder=project_folder, path_dirs=path_dirs,)
+_, _ = ps.coverage()
+#SEPARATOR##############################################################################################################
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+#TEMPLATES
+class MyClass:
     def __init__(self):
         pass
 
-    def run(self, argument_1, argument_2):
-        output = argument_1 + argument_2
-        return output
+    def run(self):
+        print('Hola Mundo!')
 
-#LAUNCHER###############################################################################################################
-import unittest
-class TestMainModule(unittest.TestCase):
-    def setUp(self):
+class TestMyClass(unittest.TestCase):
+    def SetUp(self):
         pass
 
-    def testrun(self):
-        ################################################################################################################
-        config = {
-            'argument_1': 1,
-            'argument_2': 1,
-        }
-        ################################################################################################################
-        argument_1 = config['argument_1']
-        argument_2 = config['argument_2']
-        output = MainModule().run(argument_1, argument_2)
-        config['output'] = output
-        return config
+    def test_run(self):
+        mc = MyClass()
+        mc.run()
 
-if __name__ == "__main__":
-    unittest.main()
+
+
