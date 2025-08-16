@@ -23,6 +23,8 @@ class TestMainClass(unittest.TestCase):
             output_config = self.main.launch_personal_net(config)
             assert output_config['response'] == 3
             print(output_config['response'])
+            assert str(output_config['response']) == '3'
+            print('Result correct.')
         standby_thread_3 = threading.Thread(target=aux_method, args=(copy.deepcopy(config),), daemon=True, name='3')
         standby_thread_3.start()
         time.sleep(self.test_delay)
