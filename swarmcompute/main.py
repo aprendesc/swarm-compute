@@ -29,7 +29,7 @@ class MainClass:
         elif mode == 'node':
             net.launch_node(node_name=node_name, node_method=node_method, master_address=master_address, password=password, delay=delay)
         elif mode == 'client':
-            net.launch_node(node_name='client_node', node_method=None, master_address=master_address, password=password, delay=delay)
+            net.launch_node(node_name=node_name, node_method=None, master_address=master_address, password=password, delay=delay)
             response = net.call(address_node=address_node, payload=payload)
             config['response'] = response
             net.stop()
