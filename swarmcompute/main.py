@@ -1,5 +1,3 @@
-import time
-
 from eigenlib.utils.databricks_serving_utils import use_endpoint
 
 class MainClass:
@@ -34,4 +32,3 @@ class MainClass:
             config['response'] = response
             net.stop()
         return config
-

@@ -1,6 +1,6 @@
 
 """personal_server"""
-config = {
+nano_net_config = {
     # NANO NET
     'mode': 'master',
     'master_address': 'tcp://localhost:5005',
@@ -12,3 +12,5 @@ config = {
     'delay': 1,
 }
 ########################################################################################################################
+
+config = nano_net_config
