@@ -1,8 +1,9 @@
 from eigenlib.utils.databricks_serving_utils import use_endpoint
+from eigenlib.utils.project_setup import ProjectSetup
 
 class MainClass:
     def __init__(self, config):
-        pass
+        ProjectSetup().init()
 
     @use_endpoint
     def initialize(self, config):
@@ -32,3 +33,15 @@ class MainClass:
             config['response'] = response
             net.stop()
         return config
+
+    @use_endpoint
+    def project_dev_server(self, config):
+        import os
+        from swarmautomations.main import MainClass as SAMainClass
+        config = {
+            'launch_master': False,
+            'node_name': os.environ['MODULE_NAME'],
+            'node_delay': 1
+        }
+        sa_main = SAMainClass(config)
+        sa_main.deploy_project_server(config)
