@@ -1,7 +1,6 @@
 
 apps = {
     '1':'launch_master_server',
-
         }
 print(str(apps))
 sel_n = input('Select app config: ')
