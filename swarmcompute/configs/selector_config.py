@@ -18,5 +18,6 @@ if sel_app == 'launch_master_server':
         'address_node': None,
         'payload': None,
         'delay': None,
+        'wait': True,
     }
 

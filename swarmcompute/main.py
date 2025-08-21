@@ -11,6 +11,7 @@ class MainClass:
 
     def launch_personal_net(self, config):
         from eigenlib.utils.nano_net import NanoNetClass
+        import time
         ################################################################################################################
         mode = config['mode']
         master_address = config['master_address']
@@ -20,6 +21,7 @@ class MainClass:
         address_node = config['address_node']
         payload = config['payload']
         delay = config['delay']
+        wait = config.get('wait', False)
         ################################################################################################################
         net = NanoNetClass()
         if mode == 'master':
@@ -32,6 +34,9 @@ class MainClass:
             response = net.call(address_node=address_node, payload=payload)
             config['response'] = response
             net.stop()
+
+        while wait:
+            time.sleep(10)
         return config
 
     @use_endpoint
