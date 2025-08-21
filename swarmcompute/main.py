@@ -34,7 +34,6 @@ class MainClass:
             response = net.call(address_node=address_node, payload=payload)
             config['response'] = response
             net.stop()
-
         while wait:
             time.sleep(10)
         return config
