@@ -44,4 +44,4 @@ class MainClass:
             'node_delay': 1
         }
         sa_main = SAMainClass(config)
-        sa_main.deploy_project_server(config)
+        sa_main.dev_tools_server(config)
