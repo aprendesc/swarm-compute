@@ -1,4 +1,3 @@
-from eigenlib.utils.databricks_serving_utils import use_endpoint
 from eigenlib.utils.project_setup import ProjectSetup
 
 class MainClass:
