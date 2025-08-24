@@ -46,3 +46,7 @@ class TestPersonalServer(unittest.TestCase):
         t1.join(timeout=0.1)
         t2.join(timeout=0.1)
         t3.join(timeout=0.1)
+
+# DEVELOPMENT############################################################################################################
+    def test_under_development(self):
+        print('Development  test')

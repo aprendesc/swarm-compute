@@ -2,7 +2,7 @@ from eigenlib.utils.project_setup import ProjectSetup
 
 class MainClass:
     def __init__(self):
-        ProjectSetup().init()
+        ProjectSetup().init(verbose=False)
 
     def launch_master(self, config):
         from eigenlib.utils.nano_net import NanoNetClass
