@@ -1,12 +1,12 @@
 import unittest, threading, time, copy
 from eigenlib.utils.project_setup import ProjectSetup
-from swarmcompute.main import MainClass
+from swarmcompute.main import Main
 from swarmcompute.configs.base_config import Config
 
-class TestPersonalServer(unittest.TestCase):
+class TestMain(unittest.TestCase):
     def setUp(self):
         ProjectSetup().coverage()
-        self.main = MainClass()
+        self.main = Main()
         self.delay = 5
         self.cfg = Config()
 
@@ -46,7 +46,3 @@ class TestPersonalServer(unittest.TestCase):
         t1.join(timeout=0.1)
         t2.join(timeout=0.1)
         t3.join(timeout=0.1)
-
-# DEVELOPMENT############################################################################################################
-    def test_under_development(self):
-        print('Development  test')

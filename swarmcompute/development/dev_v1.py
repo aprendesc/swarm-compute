@@ -1,7 +1,7 @@
 from eigenlib.utils.testing_utils import TestUtils
 TestUtils().get_coverage('./swarmcompute')
 
-test = TestMainClass()
+test = TestMain()
 test.setUp()
 test.test_launch_personal_net()
 
